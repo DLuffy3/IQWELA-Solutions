@@ -28,7 +28,7 @@
            <div class="mil-additional-panel">
                <div class="container-fluid">
                    <ul class="mil-ap-list">
-                       <li>Phone: 081 725 2493</li>
+                       <li>Phone: 063 535 0970</li>
                        <li>www.iqwela.com</li>
                    </ul>
                </div>
@@ -230,13 +230,13 @@
                                     <div class="mil-fw-descr">
                                         <div class="mil-card-top">
                                             <ul class="mil-bages mil-mb-15">
-                                                <li class="mil-dark">Escort</li>
+                                                <li class="mil-dark">E-Hailing</li>
                                             </ul>
 
                                         </div>
                                         <div class="mil-divider mil-divider-left mil-mb-20"></div>
                                         <h4 class="mil-mb-15">Transportation</h4>
-                                        <p class="mil-text-sm mil-mb-15">Delivery & Escort</p>
+                                        <p class="mil-text-sm mil-mb-15">Long & Short Distance Traveling</p>
                                     </div>
 
                                 </div>
@@ -311,9 +311,16 @@
                         </div>
                         <div class="col-xl-6 mil-mb-60">
 
-                            <form class="mil-subscribe-form">
-                                <input type="text" placeholder="Your whatsapp message..">
-                                <button type="submit" class="mil-button mil-accent-bg">Whatsapp Now</button>
+                            <form class="mil-subscribe-form" id="whatsappForm">
+                                <input 
+                                    type="text" 
+                                    id="whatsappMessage" 
+                                    placeholder="Your WhatsApp message.." 
+                                    required
+                                >
+                                <button type="submit" class="mil-button mil-accent-bg">
+                                    WhatsApp Now
+                                </button>
                             </form>
 
                         </div>
@@ -327,7 +334,7 @@
                             <p class="mil-light mil-light-soft" style="margin-bottom: 45px">South Africa, Eastern Cape <br>East London.</p>
 
                             <ul class="mil-simple-list mil-mb-15">
-                                <li class="mil-light"><span class="mil-accent">081 725 2493</li>
+                                <li class="mil-light"><span class="mil-accent">063 535 0970</li>
                                 <li><span class="mil-accent">iqwela</span><span class="mil-light mil-light-soft">@gmail.com</span></li>
                             </ul>
 
@@ -381,7 +388,7 @@
             </div>
             <div class="mil-footer-bottom">
                 <div class="container">
-                    <p class="mil-text-sm mil-light">© Copyright IQWELA - Creative Solutions 2025.</p>
+                    <p class="mil-text-sm mil-light">© Copyright IQWELA - Creative Solutions 2026.</p>
                     <p class="mil-text-sm mil-light">All Rights Reserved.</p>
                 </div>
             </div>
@@ -397,6 +404,23 @@
     <script src="js/plugins/swiper.min.js"></script>
     <!-- itsulu js -->
     <script src="js/main.js"></script>
+
+    <script>
+        document.getElementById("whatsappForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const message = document.getElementById("whatsappMessage").value.trim();
+            if (!message) return;
+
+            // WhatsApp number (South Africa format, remove leading 0)
+            const phoneNumber = "27635350970";
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappURL, "_blank");
+        });
+    </script>
 
 </body>
 

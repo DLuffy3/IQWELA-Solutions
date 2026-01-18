@@ -27,7 +27,7 @@
             <div class="mil-top-panel">
                 <!-- mil-top-panel-transparent -->
                 <div class="container">
-                    <a href="home-1.html" class="mil-logo" style="width: 140px"></a>
+                    <a href="index.html" class="mil-logo" style="width: 140px"></a>
                     <div class="mil-navigation">
                         <nav>
                             <ul>
@@ -64,7 +64,7 @@
             <div class="mil-banner-content">
                 <div class="container mil-relative">
                     <ul class="mil-breadcrumbs mil-mb-30">
-                        <li><a href="home-1.html">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                     <h2 class="mil-uppercase">Let’s discuss your opportunity</h2>
@@ -203,19 +203,11 @@
                     <div class="col-lg-4 col-xl-3 mil-mb-120">
 
                         <div class="mil-mb-60">
-                            <h5 class="mil-list-title mil-mb-30">Support Request</h5>
-                            <p class="mil-mb-20">Our experts are ready to answer your questions.</p>
-                            <a href="contact.html" class="mil-link mil-link-sm"><span>Support Now</span><i class="fas fa-arrow-right"></i></a>
-                        </div>
-
-                        <div class="mil-divider mil-mb-60"></div>
-
-                        <div class="mil-mb-60">
                             <div class="mil-icon-frame mil-icon-frame-md mil-icon-bg mil-mb-30">
                                 <img src="img/icons/md/8.svg" alt="icon">
                             </div>
                             <h5 class="mil-list-title mil-mb-30">Need Help?</h5>
-                            <p>For technical questions or billing questions, please contact Customer Care.</p>
+                            <p>For technical questions or billing questions, please contact Customer Care - 063 535 0970.</p>
                         </div>
 
                         <div class="mil-mb-60">
@@ -223,13 +215,10 @@
                                 <img src="img/icons/md/9.svg" alt="icon">
                             </div>
                             <h5 class="mil-list-title mil-mb-30">Needs More Info?</h5>
-                            <p>For technical questions or billing questions, please contact Customer Care.</p>
+                            <p>For technical questions or billing questions, please contact Customer Care - 063 535 0970.</p>
                         </div>
 
                         <div class="mil-divider mil-mb-60"></div>
-
-                        <a href="contact.html" class="mil-link mil-link-sm mil-mb-15"><span>Legality Guide</span><i class="fas fa-arrow-right"></i></a><br>
-                        <a href="contact.html" class="mil-link mil-link-sm"><span>Security Center</span><i class="fas fa-arrow-right"></i></a>
 
                     </div>
                 </div>
@@ -250,9 +239,16 @@
                         </div>
                         <div class="col-xl-6 mil-mb-60">
 
-                            <form class="mil-subscribe-form">
-                                <input type="text" placeholder="Your whatsapp message..">
-                                <button type="submit" class="mil-button mil-accent-bg">Whatsapp Now</button>
+                            <form class="mil-subscribe-form" id="whatsappForm">
+                                <input 
+                                    type="text" 
+                                    id="whatsappMessage" 
+                                    placeholder="Your WhatsApp message.." 
+                                    required
+                                >
+                                <button type="submit" class="mil-button mil-accent-bg">
+                                    WhatsApp Now
+                                </button>
                             </form>
 
                         </div>
@@ -266,7 +262,7 @@
                             <p class="mil-light mil-light-soft" style="margin-bottom: 45px">South Africa, Eastern Cape <br>East London.</p>
 
                             <ul class="mil-simple-list mil-mb-15">
-                                <li class="mil-light"><span class="mil-accent">081 725 2493</li>
+                                <li class="mil-light"><span class="mil-accent">063 535 0970</li>
                                 <li><span class="mil-accent">iqwela</span><span class="mil-light mil-light-soft">@gmail.com</span></li>
                             </ul>
 
@@ -320,7 +316,7 @@
             </div>
             <div class="mil-footer-bottom">
                 <div class="container">
-                    <p class="mil-text-sm mil-light">© Copyright IQWELA - Creative Solutions 2025.</p>
+                    <p class="mil-text-sm mil-light">© Copyright IQWELA - Creative Solutions 2026.</p>
                     <p class="mil-text-sm mil-light">All Rights Reserved.</p>
                 </div>
             </div>
@@ -337,6 +333,71 @@
     <!-- itsulu js -->
     <script src="js/main.js"></script>
     <script src="js/forms.js"></script>
+
+    <script>
+        document.getElementById("whatsappForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const message = document.getElementById("whatsappMessage").value.trim();
+            if (!message) return;
+
+            // WhatsApp number (South Africa format, remove leading 0)
+            const phoneNumber = "27635350970";
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappURL, "_blank");
+        });
+    </script>
+    <script>
+        document.getElementById("formContact").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            const data = {
+                firstName: formData.get("first_name") || "",
+                lastName: formData.get("last_name") || "",
+                email: formData.get("email") || "",
+                phone: formData.get("phone") || "",
+                company: formData.get("company") || "",
+                role: formData.get("role") || "",
+                category: formData.get("category") || "",
+                message: formData.get("message") || "",
+                budget: formData.get("budget") || ""
+            };
+
+            const whatsappMessage = `
+        📩 *New Contact Request*
+
+        👤 *Name:* ${data.firstName} ${data.lastName}
+        🏢 *Company:* ${data.company}
+        💼 *Role:* ${data.role}
+
+        📧 *Email:* ${data.email}
+        📞 *Phone:* ${data.phone}
+
+        🗂️ *Project Category:* ${data.category}
+        💰 *Budget:* ${data.budget}
+
+        📝 *Project Description:*
+        ${data.message}
+
+        📎 *Attachment:* I have a file to share
+            `.trim();
+
+            const phoneNumber = "27635350970"; // SA number (no leading 0)
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappURL, "_blank");
+
+            // Optional success UI
+            document.querySelector(".alert-success").style.display = "block";
+            document.querySelector(".alert-error").style.display = "none";
+        });
+    </script>
 
 </body>
 
